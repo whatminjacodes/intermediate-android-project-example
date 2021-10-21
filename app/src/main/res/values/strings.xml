@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Intermediate Android Example Project</string>
+
+    <!-- Bottom Navigation -->
+    <string name="menu_bottom_nav_home">Home</string>
+    <string name="menu_bottom_nav_readiness">Readiness</string>
+    <string name="menu_bottom_nav_sleep">Sleep</string>
+    <string name="menu_bottom_nav_activity">Activity</string>
 </resources>

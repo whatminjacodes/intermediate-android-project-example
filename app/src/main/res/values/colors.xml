@@ -5,6 +5,23 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+
+    <!-- Neutrals -->
     <color name="white">#FFFFFFFF</color>
+    <color name="grey_light">#F2F2F2</color>
+    <color name="grey_dark">#404040</color>
+    <color name="black">#FF000000</color>
+
+    <!-- App colors -->
+    <color name="yellow_light">#F1E0D5</color>
+    <color name="yellow_dark">#F0AC80</color>
+
+    <color name="blue_light">#98BFCD</color>
+    <color name="blue_dark">#4AA9CB</color>
+
+    <color name="green_light">#C1D9D1</color>
+    <color name="green_dark">#55D9AD</color>
+
+    <color name="red_light">#E8B0B2</color>
+    <color name="red_dark">#E6797D</color>
 </resources>
