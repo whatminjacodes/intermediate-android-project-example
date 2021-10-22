@@ -14,6 +14,14 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        def file = project.rootProject.file('api.properties')
+        Properties properties = new Properties()
+        if (file?.exists()) {
+            properties.load(file.newInputStream())
+        }
+        def localServerProperty = properties.getProperty("clientSecret")
+        resValue "string", "clientSecret", (localServerProperty != null) ? localServerProperty : ""
     }
 
     buildTypes {
