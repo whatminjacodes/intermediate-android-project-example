@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.intermediateandroidexampleproject.databinding.FragmentActivityBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ActivityFragment : Fragment() {
+    private val activityViewModel: ActivityViewModel by viewModel()
+
     private var _binding: FragmentActivityBinding? = null
     private val binding get() = _binding!!
 

@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.intermediateandroidexampleproject.databinding.FragmentReadinessBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ReadinessFragment : Fragment() {
+    private val readinessViewModel: ReadinessViewModel by viewModel()
+
     private var _binding: FragmentReadinessBinding? = null
     private val binding get() = _binding!!
 
