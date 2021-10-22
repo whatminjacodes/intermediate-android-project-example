@@ -1,4 +1,6 @@
 package com.example.intermediateandroidexampleproject.ui.bottomnav.activity
 
-class ActivityViewModel {
+import androidx.lifecycle.ViewModel
+
+class ActivityViewModel : ViewModel() {
 }

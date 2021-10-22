@@ -1,4 +1,6 @@
 package com.example.intermediateandroidexampleproject.ui.bottomnav.readiness
 
-class ReadinessViewModel {
+import androidx.lifecycle.ViewModel
+
+class ReadinessViewModel : ViewModel() {
 }
