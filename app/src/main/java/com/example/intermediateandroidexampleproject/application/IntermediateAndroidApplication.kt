@@ -8,7 +8,6 @@ import org.koin.core.context.startKoin
 class IntermediateAndroidApplication : Application() {
     companion object {
         const val PREF_ACCESS_TOKEN = "PREF_ACCESS_TOKEN"
-        const val PREF_LN_USER_LOGIN_CODE = "PREF_LN_USER_LOGIN_CODE"
     }
 
     override fun onCreate() {

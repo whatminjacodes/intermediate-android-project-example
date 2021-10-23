@@ -10,4 +10,9 @@ class LoginViewModel(val sharedPreferences: SharedPreferences) : ViewModel() {
     fun isLoginValid(validity: Boolean) {
         loginValidity.postValue(validity)
     }
+
+    // todo: validate token
+    fun validateToken() {
+
+    }
 }

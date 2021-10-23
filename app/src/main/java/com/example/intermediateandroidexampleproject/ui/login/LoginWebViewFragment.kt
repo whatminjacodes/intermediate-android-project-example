@@ -32,7 +32,7 @@ class LoginWebViewFragment : Fragment() {
     val redirectUri = "logintest://callback"
     val url = "https://github.com/login/oauth/authorize?client_id=$clientId&scope=repo&redirect_uri$redirectUri"
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentLoginWebviewBinding.inflate(inflater)
         return binding.root
     }
@@ -82,11 +82,11 @@ class LoginWebViewFragment : Fragment() {
     }
 
     private fun handleLoginResponse(uri: Uri) {
-        val accessToken = uri.getQueryParameter("code")
+        val code = uri.getQueryParameter("code")
 
-        if (accessToken != null) {
+        if (code != null) {
             sharedPreferences.edit {
-                putString(PREF_ACCESS_TOKEN, accessToken)
+                putString(PREF_ACCESS_TOKEN, code)
                 commit()
             }
 
