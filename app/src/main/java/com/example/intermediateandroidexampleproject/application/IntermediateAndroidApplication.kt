@@ -15,7 +15,7 @@ class IntermediateAndroidApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@IntermediateAndroidApplication)
-            modules(viewModelModule)
+            modules(listOf(viewModelModule, networkingModule))
         }
     }
 }
