@@ -64,10 +64,12 @@ class LoginViewModel(
         accessTokenCall.enqueue(object : Callback<AccessToken?> {
             override fun onResponse(call: Call<AccessToken?>?, response: Response<AccessToken?>?) {
                 Log.d("test", "test success")
+                loginValidity.postValue(true)
             }
 
             override fun onFailure(call: Call<AccessToken?>?, t: Throwable?) {
                 Log.d("test", "test failure")
+                loginValidity.postValue(false)
             }
         })
     }
