@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginNavigation"
+    app:startDestination="@id/navigation_login">
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="com.example.intermediateandroidexampleproject.ui.login.LoginFragment"
+        android:label="login fragment string"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_LoginFragment_to_LoginWebViewFragment"
+            app:destination="@id/navigation_login_webview" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_login_webview"
+        android:name="com.example.intermediateandroidexampleproject.ui.login.LoginWebViewFragment"
+        android:label="emt testi string"
+        tools:layout="@layout/fragment_login_webview">
+        <action
+            android:id="@+id/action_LoginWebViewFragment_to_LoginFragment"
+            app:destination="@id/navigation_login"
+            app:popUpTo="@id/navigation_login" />
+        <action
+            android:id="@+id/action_LoginWebViewFragment_to_BottomNavigationActivity"
+            app:destination="@id/navigation_bottom_nav"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/bottomNavigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <activity
+        android:id="@+id/navigation_bottom_nav"
+        android:name="com.example.intermediateandroidexampleproject.ui.bottomnav.BottomNavActivity"
+        tools:layout="@layout/activity_bottom_nav" />
+
+
+</navigation>

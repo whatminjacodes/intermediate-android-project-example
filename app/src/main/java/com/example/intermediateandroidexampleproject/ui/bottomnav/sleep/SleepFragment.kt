@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.intermediateandroidexampleproject.databinding.FragmentSleepBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SleepFragment : Fragment() {
+    private val sleepViewModel: SleepViewModel by viewModel()
+
     private var _binding: FragmentSleepBinding? = null
     private val binding get() = _binding!!
 

@@ -1,4 +1,4 @@
-package com.example.intermediateandroidexampleproject.ui
+package com.example.intermediateandroidexampleproject.ui.bottomnav
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +19,7 @@ class BottomNavActivity : AppCompatActivity() {
 
         // Navigation component
         val navigationView = binding.bottomNavigationView
-        val navigationController = findNavController(R.id.navHostFragment)
+        val navigationController = findNavController(R.id.bottomNavNavHostFragment)
         navigationView.setupWithNavController(navigationController)
     }
 }
