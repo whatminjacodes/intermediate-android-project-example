@@ -86,7 +86,9 @@ class LoginWebViewFragment : Fragment() {
                 commit()
             }
 
-            loginViewModel.isLoginValid(true)
+            loginViewModel.validateToken()
+
+            //loginViewModel.isLoginValid(true)
         } else {
             loginViewModel.isLoginValid(false)
         }
