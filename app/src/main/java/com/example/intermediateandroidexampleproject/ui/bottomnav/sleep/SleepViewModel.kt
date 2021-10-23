@@ -1,4 +1,6 @@
 package com.example.intermediateandroidexampleproject.ui.bottomnav.sleep
 
-class SleepViewModel {
+import androidx.lifecycle.ViewModel
+
+class SleepViewModel : ViewModel() {
 }
