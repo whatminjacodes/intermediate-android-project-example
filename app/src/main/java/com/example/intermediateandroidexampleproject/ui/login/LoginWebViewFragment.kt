@@ -26,12 +26,6 @@ class LoginWebViewFragment : Fragment() {
     private val sharedPreferences: SharedPreferences by inject()
     private val loginViewModel: LoginViewModel by viewModel()
 
-    // Moving these elsewhere
-    val clientId = "bd3f948fa6dde4f62a6e"
-    val clientSecret = ""
-    val redirectUri = "logintest://callback"
-    val url = "https://github.com/login/oauth/authorize?client_id=$clientId&scope=repo&redirect_uri$redirectUri"
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentLoginWebviewBinding.inflate(inflater)
         return binding.root
@@ -49,9 +43,11 @@ class LoginWebViewFragment : Fragment() {
 
             loginWebView.settings.javaScriptEnabled = true
 
+            val url =
+                "https://github.com/login/oauth/authorize?client_id=${loginViewModel.clientId}&scope=repo&redirect_uri${loginViewModel.redirectUri}"
             loginWebView.webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                    if (url.contains(redirectUri)) {
+                    if (url.contains(loginViewModel.redirectUri)) {
                         handleLoginResponse(Uri.parse(url.replaceFirst("#", "?")))
                     } else {
                         view.loadUrl(url)
