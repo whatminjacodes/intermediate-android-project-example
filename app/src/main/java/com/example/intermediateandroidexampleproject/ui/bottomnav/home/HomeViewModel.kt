@@ -14,4 +14,8 @@ class HomeViewModel(private val sharedPreferences: SharedPreferences) : ViewMode
             Log.d("test", accessToken)
         }
     }
+
+    fun testing() {
+        Log.d("test", "testing")
+    }
 }

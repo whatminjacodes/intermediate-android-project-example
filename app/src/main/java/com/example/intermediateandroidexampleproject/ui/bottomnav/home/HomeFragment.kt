@@ -27,6 +27,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         homeViewModel.checkForAccessToken()
+        homeViewModel.testing()
     }
 
     override fun onDestroyView() {
