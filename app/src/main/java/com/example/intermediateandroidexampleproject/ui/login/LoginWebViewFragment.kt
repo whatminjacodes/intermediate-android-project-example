@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.intermediateandroidexampleproject.R
 import com.example.intermediateandroidexampleproject.databinding.FragmentLoginWebviewBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginWebViewFragment : Fragment() {
 
@@ -22,13 +21,6 @@ class LoginWebViewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.apply {
-            loginWebViewToolbar.title = "Log in"
-            loginWebViewToolbar.setNavigationOnClickListener {
-                findNavController().popBackStack()
-            }
-
-            findNavController().navigate(R.id.action_LoginWebViewFragment_to_BottomNavigationActivity)
-        }
+        findNavController().navigate(R.id.action_LoginWebViewFragment_to_BottomNavigationActivity)
     }
 }

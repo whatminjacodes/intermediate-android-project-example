@@ -14,14 +14,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        def file = project.rootProject.file('api.properties')
-        Properties properties = new Properties()
-        if (file?.exists()) {
-            properties.load(file.newInputStream())
-        }
-        def localServerProperty = properties.getProperty("clientSecret")
-        resValue "string", "clientSecret", (localServerProperty != null) ? localServerProperty : ""
     }
 
     buildTypes {
@@ -66,15 +58,7 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-   // implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 
-    // okhttp
-    //implementation "com.squareup.okhttp3:okhttp:4.7.2"
+    // OkHttp
     implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
-
-    // retrofit
-   // implementation "com.squareup.retrofit2:retrofit:2.9.0"
-
-    // gson
-   // implementation "com.squareup.retrofit2:converter-gson:2.9.0"
 }
