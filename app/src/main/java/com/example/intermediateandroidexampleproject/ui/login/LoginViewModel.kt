@@ -2,12 +2,19 @@ package com.example.intermediateandroidexampleproject.ui.login
 
 import android.content.SharedPreferences
 import android.util.Log
-import androidx.core.content.edit
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.intermediateandroidexampleproject.data.PokemonRepository
 import com.example.intermediateandroidexampleproject.data.PokemonRequest
 import kotlinx.coroutines.*
+import com.example.intermediateandroidexampleproject.data.GitHubNetworkApi
+import retrofit2.Call
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import com.example.intermediateandroidexampleproject.data.AccessToken
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class LoginViewModel(
     val sharedPreferences: SharedPreferences,
@@ -42,6 +49,27 @@ class LoginViewModel(
               isLoginValid.postValue(true)
               EspressoTestRunner.resume()
           }*/
+    }
+
+    fun validateGithubToken(code: String) {
+        val builder = Retrofit.Builder()
+            .baseUrl("https://github.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+
+        val retrofit = builder.build()
+
+        val client: GitHubNetworkApi = retrofit.create(GitHubNetworkApi::class.java)
+        val accessTokenCall: Call<AccessToken> = client.getAccessToken(clientId, clientSecret, code)
+
+        accessTokenCall.enqueue(object : Callback<AccessToken?> {
+            override fun onResponse(call: Call<AccessToken?>?, response: Response<AccessToken?>?) {
+                Log.d("test", "test success")
+            }
+
+            override fun onFailure(call: Call<AccessToken?>?, t: Throwable?) {
+                Log.d("test", "test failure")
+            }
+        })
     }
 
     fun validateToken() = CoroutineScope(Dispatchers.IO).launch {

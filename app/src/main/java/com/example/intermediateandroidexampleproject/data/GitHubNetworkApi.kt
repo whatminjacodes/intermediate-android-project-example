@@ -14,7 +14,7 @@ interface GitHubNetworkApi {
         @Field("client_id") clientId: String?,
         @Field("client_secret") clientSecret: String?,
         @Field("code") code: String?
-    ): Call<GitHubNetworkApi?>?
+    ): Call<AccessToken>
 
     @GET("/users/{user}/repos")
     fun reposForUser(@Path("user") user: String?): Call<List<GitHubRepo?>?>?
