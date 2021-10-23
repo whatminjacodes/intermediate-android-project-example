@@ -4,25 +4,22 @@ import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.intermediateandroidexampleproject.data.PokemonRepository
-import com.example.intermediateandroidexampleproject.data.PokemonRequest
+import com.example.intermediateandroidexampleproject.data.*
 import kotlinx.coroutines.*
-import com.example.intermediateandroidexampleproject.data.GitHubNetworkApi
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import com.example.intermediateandroidexampleproject.data.AccessToken
 import retrofit2.Callback
 import retrofit2.Response
 
 
 class LoginViewModel(
     val sharedPreferences: SharedPreferences,
-    val pokemonRepository: PokemonRepository
+    val ouraRepository: OuraRepository
 ) : ViewModel() {
 
-    val redirectUri: String = "logintest://callback"
-    val clientId: String = "bd3f948fa6dde4f62a6e"
+    val redirectUri: String = "iaep://callback"
+    val clientId: String = "DS3NBTQG5D6GTPMC"
     val clientSecret: String = ""
 
     val loginValidity = MutableLiveData<Boolean>()
@@ -74,7 +71,21 @@ class LoginViewModel(
         })
     }
 
-    fun validateToken() = CoroutineScope(Dispatchers.IO).launch {
+    fun validateOuraToken() = CoroutineScope(Dispatchers.IO).launch {
+        val ouraResponse = ouraRepository.getOuraAccessToken(OuraRequest("code", clientId, redirectUri))
+
+        withContext(Dispatchers.Main) {
+            //listOfPokemon.postValue(pokemonResponse.results)
+            Log.d("test", "testing")
+            //Log.d("test", pokemonResponse.results[1].name)
+
+            Log.d("test", ouraResponse.code)
+            //loginValidity.postValue(true)
+        }
+
+    }
+
+   /* fun validateToken() = CoroutineScope(Dispatchers.IO).launch {
         val pokemonResponse = pokemonRepository.getPokemon(PokemonRequest(10))
 
         withContext(Dispatchers.Main) {
@@ -84,5 +95,5 @@ class LoginViewModel(
 
             loginValidity.postValue(true)
         }
-    }
+    }*/
 }

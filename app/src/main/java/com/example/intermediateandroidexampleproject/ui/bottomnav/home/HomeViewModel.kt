@@ -11,12 +11,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class HomeViewModel(
-    private val pokemonRepository: PokemonRepository
 ) : ViewModel() {
 
-    val listOfPokemon: MutableLiveData<List<PokemonList>> = MutableLiveData()
+   // val listOfPokemon: MutableLiveData<List<PokemonList>> = MutableLiveData()
 
-    fun getPokemon() {
+   /* fun getPokemon() {
         CoroutineScope(Dispatchers.IO).launch {
             val pokemonResponse = pokemonRepository.getPokemon(PokemonRequest(10))
 
@@ -24,5 +23,5 @@ class HomeViewModel(
                 listOfPokemon.postValue(pokemonResponse.results)
             }
         }
-    }
+    }*/
 }

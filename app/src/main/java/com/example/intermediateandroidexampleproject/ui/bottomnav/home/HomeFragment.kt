@@ -30,7 +30,7 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        homeViewModel.listOfPokemon.observe(viewLifecycleOwner, pokemonListUpdatedObserver)
+       // homeViewModel.listOfPokemon.observe(viewLifecycleOwner, pokemonListUpdatedObserver)
 
         return binding.root
     }
@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        homeViewModel.getPokemon()
+        //homeViewModel.getPokemon()
     }
 
     override fun onDestroyView() {

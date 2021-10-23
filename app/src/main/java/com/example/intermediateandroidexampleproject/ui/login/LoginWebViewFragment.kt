@@ -41,13 +41,30 @@ class LoginWebViewFragment : Fragment() {
                 findNavController().popBackStack()
             }
 
+
+            //loginViewModel.validateOuraToken()
             loginWebView.settings.javaScriptEnabled = true
 
-            val url =
-                "https://github.com/login/oauth/authorize?client_id=${loginViewModel.clientId}&scope=repo&redirect_uri${loginViewModel.redirectUri}"
+            val ouraurl =
+                "https://cloud.ouraring.com/oauth/authorize?response_type=code?client_id=${loginViewModel.clientId}&redirect_uri${loginViewModel.redirectUri}#"
+//https://cloud.ouraring.com/account/login?next=%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3DDS3NBTQG5D6GTPMC%26redirect_uri%3Diaep%253A%252F%252Fcallback
+            // val url =
+            //   "https://cloud.ouraring.com/login/oauth/authorize?client_id=${loginViewModel.clientId}&scope=repo&redirect_uri${loginViewModel.redirectUri}"
+            /* loginWebView.webViewClient = object : WebViewClient() {
+                 override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                     if (url.contains(loginViewModel.redirectUri)) {
+                         handleLoginResponse(Uri.parse(url.replaceFirst("#", "?")))
+                     } else {
+                         view.loadUrl(url)
+                     }
+                     return true
+                 }
+             }*/
+
             loginWebView.webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                    if (url.contains(loginViewModel.redirectUri)) {
+                    if (url.contains("asmo://frontpage")) {
+                        // binding.loginStatus.setText(R.string.login_logging_in)
                         handleLoginResponse(Uri.parse(url.replaceFirst("#", "?")))
                     } else {
                         view.loadUrl(url)
@@ -56,7 +73,7 @@ class LoginWebViewFragment : Fragment() {
                 }
             }
 
-            loginWebView.loadUrl(url)
+            loginWebView.loadUrl(ouraurl)
 
             loginViewModel.loginValidity.observe(viewLifecycleOwner, { valid ->
                 if (valid) {
@@ -80,6 +97,7 @@ class LoginWebViewFragment : Fragment() {
     private fun handleLoginResponse(uri: Uri) {
         val code = uri.getQueryParameter("code")
 
+        loginViewModel.validateOuraToken()
         if (code != null) {
             sharedPreferences.edit {
                 putString(PREF_ACCESS_TOKEN, code)
